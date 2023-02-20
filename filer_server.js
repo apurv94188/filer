@@ -8,6 +8,15 @@ const session = require('express-session')
 const http = require('http')
 const passport = require('passport')
 const path = require('path')
+const {OAuth2Client} = require('google-auth-library')
+const jwt = require('jsonwebtoken')
+
+// const helmet = require('helmet')
+// const hpp = require('hpp')
+// const csurf = require('csurf')
+// const cookie_session = require('cookie-session')
+
+
 //Load config
 dotenv.config({path: './config/config.env'})
 
@@ -56,6 +65,13 @@ app.use(passport.session())
 app.use('/', require('./routes/index'))
 app.use('/auth', require('./routes/auth'))
 //app.get('/', (req, res) => res.send('Hello World !'));
+// app.use(
+//       session({
+//             name: 'session',
+//             secret: 'someSecretKeyLikeStickyNotes',
+//             expires: new Date(Date.now() + 1000*60*60)
+//       })
+// )
 
 
 app.listen(
